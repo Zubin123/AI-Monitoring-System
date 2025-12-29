@@ -91,10 +91,16 @@ def render_drift_section(settings):
     json_path = settings.artifacts_dir / "monitoring_summary.json"
 
     if html_path.exists():
-        st.success(f"Drift HTML report found: {html_path}")
-        st.markdown(f"[Open report]({html_path.as_uri()})")
+    st.success("Drift HTML report found")g
+    with open(html_path, "r", encoding="utf-8") as f:
+        st.components.v1.html(
+            f.read(),
+            height=800,
+            scrolling=True,
+        )
     else:
         st.warning("No drift HTML report found yet.")
+
 
     summary = load_drift_summary(json_path)
     if summary:
