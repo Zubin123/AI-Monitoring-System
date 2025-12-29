@@ -1,6 +1,5 @@
 venv
-artifacts
-data
+data/creditdata.csv
 logs/
 __pycache__/
 *.pyc
